@@ -29,13 +29,12 @@ This project focuses on optimizing ILR to increase energy output from existing P
 ├── /data/                    # Solar radiation and weather data
 │   └── 2022_data_madrid.zip   # Sample data file for Madrid, Spain
 │
-├── /src/                     # Python source code
-│   ├── main.py               # Main script that runs the full analysis
-│   ├── clipping_calculations.py  # Inverter clipping calculations
-│   ├── energy_calculations.py   # Energy production and conversion calculations
-│   ├── financial_calculations.py # NPV, IRR financial calculations
-│   ├── plots.py               # Script for generating plots
-│   └── weather_data.py        # Script for fetching weather data from Open Meteo API
+├── /src/
+│   ├── main.py                  # Archivo principal que ejecuta todas las funciones
+│   ├── financial_calculations.py # Cálculos financieros como NPV y IRR
+│   ├── energy_calculations.py    # Cálculos de producción de energía en MW y MWh
+│   ├── clipping_calculations.py  # Cálculos de energía perdida por clipping
+│   ├── plots.py                 # Generación de gráficos para los resultados
 │
 ├── requirements.txt          # List of required Python packages
 ├── README.md                 # Overview and project documentation
