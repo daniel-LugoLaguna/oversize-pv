@@ -27,7 +27,7 @@ This project focuses on optimizing ILR to increase energy output from existing P
 /oversize-pv-project
 │
 ├── /data/                    # Solar radiation and weather data
-│   └── 2022_data_madrid.csv   # Sample data file for Madrid, Spain
+│   └── 2022_data_madrid.zip   # Sample data file for Madrid, Spain
 │
 ├── /src/                     # Python source code
 │   ├── main.py               # Main script that runs the full analysis
