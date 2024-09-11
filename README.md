@@ -42,29 +42,24 @@ This project focuses on optimizing ILR to increase energy output from existing P
 ```
 ## **File Descriptions**
 
-### `get_meteo.py`
-This script contains the function `get_meteo_data`, which retrieves historical meteorological data (temperature and wind speed) from the Open Meteo API. The function processes the data into a minute-level temporal resolution to match the solar data. It returns a DataFrame with these environmental parameters for each location.
+### `main.py`: 
+  This is the main entry point of the project. It imports the necessary modules for energy and financial calculations, executes the simulation, and generates the relevant plots. It processes different PPA prices (€/MWh) and visualizes the NPV-to-investment ratio, NPV, IRR, and inverter clipping.
 
-### `solar_data.py`
-This script processes solar irradiance data from the Copernicus Atmosphere Monitoring Service (CAMS). It cleans the data and converts it from hourly to minute-level resolution, adjusting for the specific requirements of the photovoltaic (PV) system analysis. The cleaned solar data is used for simulating PV energy generation.
+### `financial_calculations.py`: 
+  Contains functions to calculate the financial performance of the PV system. These include calculating the benefits (NPV and IRR) based on different PPA prices. The function `calculate_benefit` computes the economic benefits, and `calculate_financials` calculates the NPV and IRR for different ILR values.
 
-### `pv_system_config.py`
-This script defines the configuration of the PV system. It includes the number of inverters, strings per inverter, modules per string, and calculates the DC and AC power for various Inverter Loading Ratio (ILR) levels. The script also initializes the PV modules and inverters used in the analysis.
+### `energy_calculations.py`: 
+  Handles the simulation of the energy production from the PV system. It defines the PV system using the `pvlib` library and calculates the power output (both AC and DC). This file also converts power (MW) into energy (MWh) and returns the yearly energy produced for each ILR value.
 
-### `run_model.py`
-This script integrates the meteorological data and the solar irradiance data to simulate the power output of the PV system. It uses the pvlib Python library and the Sandia Array Performance Model to calculate the AC power output for different ILR levels, while considering environmental factors such as temperature and irradiance.
-
-### `clipping_analysis.py`
-This script analyzes the energy lost due to inverter clipping. It calculates the amount of energy that could not be converted from DC to AC because the generated power exceeds the inverter's capacity. The results are then used to assess the impact of different ILR values on system efficiency.
-
-### `financial_analysis.py`
-This script performs the financial analysis of the PV system. It calculates the system costs, including capital expenditure and operational costs, based on real-world data. It also computes financial metrics such as Net Present Value (NPV), Internal Rate of Return (IRR), and NPV-to-Investment Ratio for different ILR levels.
+### `clipping_calculations.py`: 
+  Defines the function to calculate inverter clipping. This determines how much energy is lost due to oversizing by comparing the DC input power from the solar array with the inverter's maximum AC power capacity. The function generates a DataFrame of clipping results for various ILR values.
 
 ### `plots.py`
-This script generates visualizations of the energy production, inverter clipping, and financial results. It includes line and bar plots to illustrate how different ILR values impact the PV system’s performance, energy output, and economic profitability.
-
-### `main.py`
-The main entry point for running the complete analysis. This script calls the other modules to execute the full process, from data acquisition to energy and financial analysis. It ties all the steps together, producing final results and visualizations for the PV system's performance across different ILR scenarios.
+  Contains functions to generate the plots for visualizing the results. It includes plots for:
+    - NPV-to-Investment Ratio vs. ILR (`plot_npv_ratio`)
+    - NPV vs. ILR (`plot_npv`)
+    - IRR vs. ILR (`plot_irr`)
+    - Inverter clipping vs. ILR (`plot_clipping`)
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](notebooks/LICENSE) file for more details.
