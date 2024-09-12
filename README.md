@@ -30,11 +30,12 @@ This project focuses on optimizing ILR to increase energy output from existing P
 │   └── 2022_data_madrid.zip   # Sample data file for Madrid, Spain
 │
 ├── /src/
-│   ├── main.py                  # Archivo principal que ejecuta todas las funciones
-│   ├── financial_calculations.py # Cálculos financieros como NPV y IRR
-│   ├── energy_calculations.py    # Cálculos de producción de energía en MW y MWh
+│   ├── main.py                  # Main script that executes all functions
+│   ├── data_preprocessing.py     # Preprocessing of meteorological and solar data
+│   ├── financial_calculations.py # Financial calculations like NPV and IRR
+│   ├── energy_calculations.py    # Energy production calculations in MW and MWh
 │   ├── clipping_calculations.py  # Cálculos de energía perdida por clipping
-│   ├── plots.py                 # Generación de gráficos para los resultados
+│   ├── plots.py                 # Energy loss due to inverter clipping
 │
 ├── requirements.txt          # List of required Python packages
 ├── README.md                 # Overview and project documentation
@@ -44,6 +45,9 @@ This project focuses on optimizing ILR to increase energy output from existing P
 
 ### `main.py`: 
   This is the main entry point of the project. It imports the necessary modules for energy and financial calculations, executes the simulation, and generates the relevant plots. It processes different PPA prices (€/MWh) and visualizes the NPV-to-investment ratio, NPV, IRR, and inverter clipping.
+
+### `data_preprocessing.py`
+  This module handles the preprocessing of meteorological and solar radiation data required for the PV energy simulation.
 
 ### `financial_calculations.py`: 
   Contains functions to calculate the financial performance of the PV system. These include calculating the benefits (NPV and IRR) based on different PPA prices. The function `calculate_benefit` computes the economic benefits, and `calculate_financials` calculates the NPV and IRR for different ILR values.
