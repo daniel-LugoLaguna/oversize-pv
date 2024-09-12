@@ -1,9 +1,15 @@
 import pandas as pd
-import numpy as np
 from financial_calculations import calculate_financials, calculate_benefit
 from energy_calculations import system_output_energy_mwh, yearly_energy_produced_mwh, df_ILR_cost_euros, df_ILR_energy_mwh
 from plots import plot_npv_ratio, plot_npv, plot_irr, plot_clipping
 from clipping_calculations import clippingdf_group
+from data_preprocessing import merge_solar_and_meteo_data
+
+# Coordinates for the location (Madrid in this case)
+coord_df = pd.DataFrame({'latitude': [40.4165], 'longitude': [-3.70256], 'city': ['Madrid']})
+
+# Merge meteorological and solar data
+combined_data = merge_solar_and_meteo_data(coord_df, '2022-01-01', '2022-12-31', 'data/2022_data_madrid.csv')
 
 # PPA price factors in €/MWh
 ppa_prices = [35, 50, 65, 100]  # €/MWh
